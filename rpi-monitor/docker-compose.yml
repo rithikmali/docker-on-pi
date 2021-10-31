@@ -1,0 +1,18 @@
+version: "2.1"
+services:
+  rpimonitor:
+    image: michaelmiklis/rpi-monitor
+    container_name: rpimonitor
+    volumes:
+      - /opt/vc:/opt/vc:ro
+      - /boot:/boot:ro
+      - /sys:/dockerhost/sys:ro
+      - /etc:/dockerhost/etc:ro
+      - /proc:/dockerhost/proc:ro
+      - /usr/lib:/dockerhost/usr/lib:ro
+    ports:
+      - 8888:8888
+    devices:
+      - "/dev/vchiq"
+      - "/dev/vcsm"
+    restart: unless-stopped
