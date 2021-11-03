@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  overseerr:
+    image: sctx/overseerr:latest
+    container_name: overseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Asia/Kolkata
+    ports:
+      - 5055:5055
+    volumes:
+      - /media/newhd/docker/overseerr/config:/app/config
+    restart: unless-stopped
